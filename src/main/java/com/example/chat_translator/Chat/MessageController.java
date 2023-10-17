@@ -26,7 +26,7 @@ public class MessageController {
     }
 
     @GetMapping("/chat/translator/{code}")
-    public String get(@PathVariable String code) {
+    public Map<String, Object> get(@PathVariable String code) {
 
         // webClient 기본 설정
         WebClient webClient =
@@ -48,8 +48,9 @@ public class MessageController {
                         .block();
 
         // 결과 확인
-        log.info((String) response.get("output"));
-        return (String) response.get("output");
+        //log.info((String) response.get("output"));
+        log.info(String.valueOf(response));
+        return response;
     }
 
 }
